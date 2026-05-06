@@ -36,5 +36,17 @@ out/
 ### VS Code ###
 .vscode/
 
+### Agent / AI tooling - always tracked ###
+!CLAUDE.md
+!AGENTS.md
+!agents.md
+!.claude/
+!.cursor/
+!.codex/
+
+### Local-only agent settings (machine-specific, not committed) ###
+.claude/settings.local.json
+.cursor/settings.local.json
+
 ### Kotlin ###
 .kotlin
