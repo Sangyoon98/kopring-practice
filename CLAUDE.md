@@ -70,7 +70,7 @@
 
 ## 프로젝트 개요
 
-`kopring`은 Kotlin + Spring Boot 4 기반의 실습 프로젝트로, JPA와 PostgreSQL을 사용한다.
+`kopring`은 Kotlin + Spring Boot 4 기반의 실습 프로젝트로, JPA를 사용한다.
 
 - **Group**: `com.sangyoon`
 - **Java toolchain**: 21
@@ -102,7 +102,7 @@
 
 - 진입점: `KopringApplication.kt` — `@SpringBootApplication` + `main()`
 - 설정: `src/main/resources/application.yaml`
-- 런타임 DB: PostgreSQL (`application.yaml`에 연결 정보 설정)
+- 런타임 DB: 기본 H2 인메모리 DB, PostgreSQL 전환 설정은 `application.yaml` 주석과 `docs/setup/local-run.md` 참고
 - 테스트: `spring-boot-starter-data-jpa-test`, `spring-boot-starter-webmvc-test` (슬라이스 테스트 사용 가능)
 
 ## Kotlin/JPA 특이사항
@@ -119,11 +119,24 @@
 
 ```
 docs/
+├── api/                # API 스펙 및 엔드포인트 문서
 ├── conventions/
-│   └── commit.md       # 커밋 메시지 컨벤션
+│   ├── api-response.md # 공통 응답 컨벤션
+│   ├── commit.md       # 커밋 메시지 컨벤션
+│   ├── exception.md    # 예외 처리 컨벤션
+│   ├── package.md      # 패키지 구조 컨벤션
+│   └── swagger.md      # Swagger 문서화 컨벤션
+├── database/
+│   └── schema.md       # DB 스키마 및 공통 엔티티 문서
+├── domains/            # 기능/도메인별 문서
+├── harness/
+│   ├── agent-team.md   # 팀형 서브에이전트 역할과 분배 기준
+│   ├── documentation-sync.md # 문서 최신화 트리거
+│   └── mistakes.md     # AI 실수 재발 방지 기록
 ├── domains.md          # 패키지 대분류 목록 (커밋 스코프용, 자동 관리)
 ├── architecture/       # 설계 결정 및 시스템 구조 (추가 예정)
-├── api/                # API 스펙 및 엔드포인트 문서 (추가 예정)
+├── setup/
+│   └── local-run.md    # 로컬 실행 방법
 └── adr/                # Architecture Decision Records (추가 예정)
 
 .claude/commands/
@@ -135,7 +148,11 @@ agents.md               # 에이전트 역할 및 협업 규칙
 ## 하네스 엔지니어링 실천 규칙
 
 - **능동적 문서화**: 작업 중 새로운 패턴, 규칙, 특이사항을 발견하면 적절한 `docs/` 문서에 즉시 기록한다.
+- **문서 최신화 트리거 준수**: 작업 시작 전, 파일 수정 후, 커밋 전 `docs/harness/documentation-sync.md`의 체크리스트를 따른다.
+- **팀형 에이전트 운영**: 복합 작업은 `docs/harness/agent-team.md` 기준으로 역할을 나누되, 단순 작업은 직접 처리한다.
 - **도메인 동기화**: 패키지 구조가 변경될 때마다 `docs/domains.md`를 업데이트한다.
 - **컨벤션 준수**: 커밋 전 반드시 `docs/conventions/commit.md`를 참조한다.
 - **오류 기록**: 반복되는 실수나 엣지 케이스를 발견하면 관련 문서에 주의사항으로 추가한다.
+- **실수 재발 방지**: 작업 전 `docs/harness/mistakes.md`를 확인하고, 새 실수가 발견되면 즉시 기록한다.
+- **API 문서화 기본 포함**: 컨트롤러/API 작업에는 사용자가 따로 말하지 않아도 Swagger `@Tag`, `@Operation`, `@ApiResponses`, 필요한 `@Parameter`/`@Schema`를 함께 작성한다.
 - **스킬 활용**: `/commit` 등 `.claude/commands/`에 정의된 스킬을 우선 사용한다.
