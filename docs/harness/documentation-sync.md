@@ -37,7 +37,7 @@
 | 공통 응답/예외 변경 | `docs/conventions/api-response.md`, `docs/conventions/exception.md` |
 | 패키지 구조 변경 | `docs/conventions/package.md`, `docs/domains.md` |
 | 실행/환경 설정 변경 | `docs/setup/local-run.md` |
-| AI 실수 발견 | `docs/harness/mistakes.md` |
+| AI 실수 발견 또는 사용자의 누락/오판 지적 | `docs/harness/mistakes.md` |
 | 에이전트 역할/협업 방식 변경 | `docs/harness/agent-team.md`, `AGENTS.md` |
 | 커밋/작업 규칙 변경 | `docs/conventions/commit.md`, `.claude/commands/commit.md` |
 
