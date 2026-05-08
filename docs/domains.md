@@ -10,6 +10,9 @@
 | 스코프 | 패키지 경로 | 설명 |
 |--------|------------|------|
 | `root` | `com.sangyoon.kopring` | 애플리케이션 진입점 |
+| `common` | `com.sangyoon.kopring.common` | 공통 응답, 예외, advice, config, 엔티티 기반 클래스 |
+| `health` | `com.sangyoon.kopring.health` | health 체크 API (`controller/service/dto`) |
+| `sample` | `com.sangyoon.kopring.sample` | 샘플 API 예제 (`controller/service/dto`) |
 
 ---
 
@@ -27,3 +30,9 @@
 | 날짜 | 변경 내용 |
 |------|-----------|
 | 2026-05-06 | 초기 구조 생성 (root만 존재) |
+| 2026-05-08 | health 체크 API 도메인 추가 |
+| 2026-05-08 | common 응답/예외와 sample API 도메인 추가 |
+| 2026-05-08 | 공모전 학습 목적에 맞춰 기능별 레이어드 구조로 단순화 |
+| 2026-05-08 | common 엔티티 시간 추적 기반 클래스 추가 |
+| 2026-05-08 | Swagger/OpenAPI 설정 추가 |
+| 2026-05-08 | Java 연습 프로젝트와 동일한 status 기반 공통 응답/예외 구조로 정렬 |
