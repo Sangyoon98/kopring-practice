@@ -1,14 +1,20 @@
 package com.sangyoon.kopring.common.response
 
 import com.fasterxml.jackson.annotation.JsonInclude
+import io.swagger.v3.oas.annotations.media.Schema
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@Schema(description = "공통 API 응답")
 data class ApiResponse<T>(
+	@field:Schema(description = "HTTP 상태 코드", example = "200")
 	val status: Int,
+	@field:Schema(description = "요청 성공 여부", example = "true")
 	val success: Boolean,
+	@field:Schema(description = "응답 메시지", example = "샘플 조회 성공")
 	val message: String,
+	@field:Schema(description = "응답 데이터")
 	val data: T? = null,
 ) {
 	companion object {
