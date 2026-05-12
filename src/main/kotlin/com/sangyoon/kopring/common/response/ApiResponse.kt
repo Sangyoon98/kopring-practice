@@ -97,6 +97,14 @@ enum class SuccessStatus(
 		httpStatus = HttpStatus.CREATED,
 		message = "샘플 등록 성공",
 	),
+	CREATE_PARENT_PROFILE_SUCCESS(
+		httpStatus = HttpStatus.CREATED,
+		message = "부모님 프로필 생성 성공"
+	),
+	GET_PARENT_PROFILE_SUCCESS(
+		httpStatus = HttpStatus.OK,
+		message = "부모님 프로필 조회 성공"
+	),
 	;
 
 	val statusCode: Int

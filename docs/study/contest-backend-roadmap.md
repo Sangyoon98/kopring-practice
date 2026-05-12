@@ -111,10 +111,10 @@ com.sangyoon.kopring
 
 목표: 부모님 프로필 CRUD를 만들면서 Controller, Service, DTO, Validation, 예외 처리를 익힌다.
 
-- [ ] Lesson 1. `parent` 도메인 생성
-- [ ] Lesson 2. `ParentProfileCreateRequest`, `ParentProfileResponse` DTO 작성
-- [ ] Lesson 3. `ParentProfileController` 기본 API 작성
-- [ ] Lesson 4. `ParentProfileService` 작성
+- [x] Lesson 1. `parent` 도메인 생성
+- [x] Lesson 2. `ParentProfileCreateRequest`, `ParentProfileResponse` DTO 작성
+- [x] Lesson 3. `ParentProfileController` 기본 API 작성
+- [x] Lesson 4. `ParentProfileService` 작성
 - [ ] Lesson 5. Validation 적용
 - [ ] Lesson 6. 예외 응답 확인
 - [ ] Lesson 7. Controller 테스트 작성
@@ -450,18 +450,18 @@ Codex는 다음 단계 안내 시 이 형식을 사용한다.
 | 날짜 | Lesson | 작업 내용 | 상태 | 메모 |
 |---|---:|---|---|---|
 | 2026-05-11 | - | 공모전 백엔드 학습 로드맵 문서 생성 | 완료 | 다음 요청부터 Lesson 1 시작 |
+| 2026-05-12 | 1-4 | parent 도메인, 부모님 프로필 DTO/Controller/Service 작성 | 완료 | DB 없이 메모리 기반 생성/조회 API 구현 |
 
 ---
 
 ## 다음에 시작할 작업
 
-다음 수업은 `Lesson 1. parent 도메인 생성`이다.
+다음 수업은 `Lesson 5. Validation 적용`이다.
 
-첫 목표는 DB 없이 메모리 기반으로 부모님 프로필 생성/조회 API를 만드는 것이다.
+목표는 부모님 프로필 생성 요청에 입력값 검증을 추가하는 것이다.
 
 ```http
 POST /api/v1/parent-profiles
-GET  /api/v1/parent-profiles/{parentProfileId}
 ```
 
-이 단계에서는 JPA를 아직 쓰지 않는다. 먼저 Controller, DTO, Service 흐름을 손에 익힌다.
+`nickname`, `ageRange`, `walkingSpeed`, `restInterval`, `preferredThemes`가 비어 있을 때 400 응답을 반환하도록 만든다.
