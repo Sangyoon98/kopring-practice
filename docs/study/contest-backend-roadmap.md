@@ -115,7 +115,7 @@ com.sangyoon.kopring
 - [x] Lesson 2. `ParentProfileCreateRequest`, `ParentProfileResponse` DTO 작성
 - [x] Lesson 3. `ParentProfileController` 기본 API 작성
 - [x] Lesson 4. `ParentProfileService` 작성
-- [ ] Lesson 5. Validation 적용
+- [x] Lesson 5. Validation 적용
 - [ ] Lesson 6. 예외 응답 확인
 - [ ] Lesson 7. Controller 테스트 작성
 
@@ -451,17 +451,19 @@ Codex는 다음 단계 안내 시 이 형식을 사용한다.
 |---|---:|---|---|---|
 | 2026-05-11 | - | 공모전 백엔드 학습 로드맵 문서 생성 | 완료 | 다음 요청부터 Lesson 1 시작 |
 | 2026-05-12 | 1-4 | parent 도메인, 부모님 프로필 DTO/Controller/Service 작성 | 완료 | DB 없이 메모리 기반 생성/조회 API 구현 |
+| 2026-05-13 | 5 | 부모님 프로필 생성 요청 Validation 적용 | 완료 | 빈 문자열/빈 테마 목록을 400 응답으로 차단 |
 
 ---
 
 ## 다음에 시작할 작업
 
-다음 수업은 `Lesson 5. Validation 적용`이다.
+다음 수업은 `Lesson 6. 예외 응답 확인`이다.
 
-목표는 부모님 프로필 생성 요청에 입력값 검증을 추가하는 것이다.
+목표는 Validation 에러와 NotFound 에러의 응답 형태를 확인하고 공통 예외 처리 흐름을 이해하는 것이다.
 
 ```http
 POST /api/v1/parent-profiles
+GET  /api/v1/parent-profiles/{parentProfileId}
 ```
 
-`nickname`, `ageRange`, `walkingSpeed`, `restInterval`, `preferredThemes`가 비어 있을 때 400 응답을 반환하도록 만든다.
+빈 요청값은 400, 존재하지 않는 부모님 프로필 조회는 404로 응답하는지 확인한다.

@@ -7,6 +7,7 @@ import com.sangyoon.kopring.parent.dto.ParentProfileResponse
 import com.sangyoon.kopring.parent.service.ParentProfileService
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
+import jakarta.validation.Valid
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -24,7 +25,7 @@ class ParentProfileController(
     @Operation(summary = "부모님 프로필 생성")
     @PostMapping
     fun createParentProfile(
-        @RequestBody request: ParentProfileCreateRequest,
+        @Valid @RequestBody request: ParentProfileCreateRequest,
     ): ResponseEntity<ApiResponse<ParentProfileResponse>> {
         val response = parentProfileService.createParentProfile(request)
 
