@@ -1,6 +1,7 @@
 package com.sangyoon.kopring.parent.service
 
 import com.sangyoon.kopring.common.exception.NotFoundException
+import com.sangyoon.kopring.common.response.ErrorStatus
 import com.sangyoon.kopring.parent.dto.ParentProfileCreateRequest
 import com.sangyoon.kopring.parent.dto.ParentProfileResponse
 import org.springframework.stereotype.Service
@@ -31,7 +32,6 @@ class ParentProfileService {
     }
 
     fun getParentProfile(parentProfileId: Long): ParentProfileResponse =
-        parentProfiles[parentProfileId] ?: throw NotFoundException(
-            "부모님 프로필을 찾을 수 없습니다."
-        )
+        parentProfiles[parentProfileId]
+            ?: throw NotFoundException(ErrorStatus.NOT_FOUND_PARENT_PROFILE_EXCEPTION.message)
 }

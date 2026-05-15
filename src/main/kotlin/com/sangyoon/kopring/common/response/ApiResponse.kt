@@ -75,6 +75,10 @@ enum class ErrorStatus(
 		httpStatus = HttpStatus.NOT_FOUND,
 		message = "존재하지 않는 사용자 입니다.",
 	),
+	NOT_FOUND_PARENT_PROFILE_EXCEPTION(
+		httpStatus = HttpStatus.NOT_FOUND,
+		message = "부모님 프로필을 찾을 수 없습니다.",
+	),
 	FAIL_UPLOAD_EXCEPTION(
 		httpStatus = HttpStatus.INTERNAL_SERVER_ERROR,
 		message = "파일 업로드 실패하였습니다.",
