@@ -117,7 +117,7 @@ com.sangyoon.kopring
 - [x] Lesson 4. `ParentProfileService` 작성
 - [x] Lesson 5. Validation 적용
 - [x] Lesson 6. 예외 응답 확인
-- [ ] Lesson 7. Controller 테스트 작성
+- [x] Lesson 7. Controller 테스트 작성
 
 목표 API:
 
@@ -453,18 +453,18 @@ Codex는 다음 단계 안내 시 이 형식을 사용한다.
 | 2026-05-12 | 1-4 | parent 도메인, 부모님 프로필 DTO/Controller/Service 작성 | 완료 | DB 없이 메모리 기반 생성/조회 API 구현 |
 | 2026-05-13 | 5 | 부모님 프로필 생성 요청 Validation 적용 | 완료 | 빈 문자열/빈 테마 목록을 400 응답으로 차단 |
 | 2026-05-15 | 6 | 부모님 프로필 NotFound 예외 응답 상태 추가 | 완료 | Validation 400과 Service NotFound 404 흐름 구분 |
+| 2026-05-16 | 7 | 부모님 프로필 컨트롤러 테스트 작성 | 완료 | 생성/조회 성공, Validation 실패, NotFound 실패 검증 |
 
 ---
 
 ## 다음에 시작할 작업
 
-다음 수업은 `Lesson 7. Controller 테스트 작성`이다.
+다음 수업은 `Lesson 8. Docker Compose로 PostgreSQL 실행`이다.
 
-목표는 부모님 프로필 생성/조회 API의 성공, Validation 실패, NotFound 실패 흐름을 테스트 코드로 고정하는 것이다.
+목표는 로컬 개발용 PostgreSQL을 Docker Compose로 실행하고 Spring에서 사용할 DB 준비를 시작하는 것이다.
 
-```http
-POST /api/v1/parent-profiles
-GET  /api/v1/parent-profiles/{parentProfileId}
+```text
+docker compose up -d
 ```
 
-MockMvc 또는 WebMvcTest 기반으로 201, 400, 404 응답을 검증한다.
+다음 단계에서는 아직 JPA 전환까지 가지 않고, PostgreSQL 컨테이너 실행과 접속 확인에 집중한다.

@@ -36,7 +36,7 @@ class ControllerExceptionAdvice {
 	fun handleMethodArgumentNotValidException(exception: MethodArgumentNotValidException): ResponseEntity<ApiResponse<Nothing>> {
 		val fieldError: FieldError? = exception.fieldError
 		val message = fieldError
-			?.let { "${it.defaultMessage}. (${it.field})" }
+			?.let { "${it.defaultMessage} (${it.field})" }
 			?: HttpStatus.BAD_REQUEST.reasonPhrase
 
 		return ApiResponse.fail(HttpStatus.BAD_REQUEST, message)
