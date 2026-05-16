@@ -47,6 +47,7 @@ out/
 ### Local-only agent settings (machine-specific, not committed) ###
 .claude/settings.local.json
 .cursor/settings.local.json
+local.properties
 
 ### Kotlin ###
 .kotlin
