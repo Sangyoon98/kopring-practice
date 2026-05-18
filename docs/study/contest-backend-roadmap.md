@@ -142,7 +142,7 @@ DELETE /api/v1/parent-profiles/{parentProfileId}
 목표: 메모리 응답이 아니라 실제 PostgreSQL에 데이터를 저장한다.
 
 - [x] Lesson 8. Docker Compose로 PostgreSQL 실행
-- [ ] Lesson 9. Spring Boot와 PostgreSQL 연결
+- [x] Lesson 9. Spring Boot와 PostgreSQL 연결
 - [ ] Lesson 10. `ParentProfile` Entity 작성
 - [ ] Lesson 11. `ParentProfileRepository` 작성
 - [ ] Lesson 12. Service를 JPA 기반으로 변경
@@ -455,17 +455,18 @@ Codex는 다음 단계 안내 시 이 형식을 사용한다.
 | 2026-05-15 | 6 | 부모님 프로필 NotFound 예외 응답 상태 추가 | 완료 | Validation 400과 Service NotFound 404 흐름 구분 |
 | 2026-05-16 | 7 | 부모님 프로필 컨트롤러 테스트 작성 | 완료 | 생성/조회 성공, Validation 실패, NotFound 실패 검증 |
 | 2026-05-17 | 8 | Docker Compose로 PostgreSQL 실행 | 완료 | postgres:16 컨테이너 실행 및 psql 접속 확인 |
+| 2026-05-18 | 9 | Spring Boot와 PostgreSQL 연결 | 완료 | H2 설정 제거 후 PostgreSQL datasource로 전환 |
 
 ---
 
 ## 다음에 시작할 작업
 
-다음 수업은 `Lesson 9. Spring Boot와 PostgreSQL 연결`이다.
+다음 수업은 `Lesson 10. ParentProfile Entity 작성`이다.
 
-목표는 Spring Boot datasource를 H2에서 Docker PostgreSQL로 전환하는 것이다.
+목표는 부모님 프로필을 DB 테이블로 저장하기 위한 JPA Entity를 작성하는 것이다.
 
 ```text
-jdbc:postgresql://localhost:5432/kopring
+parent/entity/ParentProfile.kt
 ```
 
-다음 단계에서는 `application.yaml`의 datasource와 JPA 설정을 PostgreSQL 기준으로 바꾼다.
+다음 단계에서는 아직 Repository 전환 전, Entity 필드와 JPA 어노테이션부터 학습한다.
