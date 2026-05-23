@@ -1,5 +1,6 @@
 package com.sangyoon.kopring.parent.dto
 
+import com.sangyoon.kopring.parent.entity.ParentProfile
 import io.swagger.v3.oas.annotations.media.Schema
 import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.NotEmpty
@@ -46,4 +47,17 @@ data class ParentProfileResponse(
     val restInterval: String,
     @field:Schema(description = "선호 테마", example = "[\"전통시장\", \"사찰/역사\"]")
     val preferredThemes: List<String>,
-)
+) {
+    companion object {
+        fun from(parentProfile: ParentProfile): ParentProfileResponse =
+            ParentProfileResponse(
+                id = parentProfile.id!!,
+                nickname = parentProfile.nickname,
+                ageRange = parentProfile.ageRange,
+                walkingSpeed = parentProfile.walkingSpeed,
+                preferStairs = parentProfile.preferStairs,
+                restInterval = parentProfile.restInterval,
+                preferredThemes = parentProfile.preferredThemes,
+            )
+    }
+}

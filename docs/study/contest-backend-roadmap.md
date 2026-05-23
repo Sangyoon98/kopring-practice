@@ -145,7 +145,7 @@ DELETE /api/v1/parent-profiles/{parentProfileId}
 - [x] Lesson 9. Spring Boot와 PostgreSQL 연결
 - [x] Lesson 10. `ParentProfile` Entity 작성
 - [x] Lesson 11. `ParentProfileRepository` 작성
-- [ ] Lesson 12. Service를 JPA 기반으로 변경
+- [x] Lesson 12. Service를 JPA 기반으로 변경
 - [ ] Lesson 13. BaseTimeEntity 적용
 - [ ] Lesson 14. Repository/Service 테스트 작성
 
@@ -458,17 +458,18 @@ Codex는 다음 단계 안내 시 이 형식을 사용한다.
 | 2026-05-18 | 9 | Spring Boot와 PostgreSQL 연결 | 완료 | H2 설정 제거 후 PostgreSQL datasource로 전환 |
 | 2026-05-20 | 10 | ParentProfile JPA Entity 작성 | 완료 | 부모님 프로필 테이블과 선호 테마 ElementCollection 모델링 |
 | 2026-05-22 | 11 | ParentProfileRepository 작성 | 완료 | JpaRepository 추가 및 저장/조회 Repository 테스트 작성 |
+| 2026-05-23 | 12 | ParentProfileService를 JPA 기반으로 변경 | 완료 | 메모리 저장소 제거 후 Repository 저장/조회로 전환 |
 
 ---
 
 ## 다음에 시작할 작업
 
-다음 수업은 `Lesson 12. Service를 JPA 기반으로 변경`이다.
+다음 수업은 `Lesson 13. BaseTimeEntity 적용`이다.
 
-목표는 `ParentProfileService`의 메모리 저장소를 제거하고 Repository를 통해 PostgreSQL에 저장하도록 변경하는 것이다.
+목표는 부모님 프로필 저장 시 `createdAt`, `updatedAt`이 자동으로 기록되는지 확인하는 것이다.
 
 ```text
-ConcurrentHashMap → ParentProfileRepository
+createdAt / updatedAt
 ```
 
-다음 단계에서는 생성/조회 API가 실제 DB를 사용하도록 바꾸고 컨트롤러 테스트도 그에 맞게 조정한다.
+다음 단계에서는 JPA Auditing 동작을 Repository 테스트로 확인한다.

@@ -1,13 +1,18 @@
 package com.sangyoon.kopring.parent.controller
 
 import com.sangyoon.kopring.common.advice.ControllerExceptionAdvice
+import com.sangyoon.kopring.common.exception.NotFoundException
+import com.sangyoon.kopring.common.response.ErrorStatus
+import com.sangyoon.kopring.parent.dto.ParentProfileCreateRequest
+import com.sangyoon.kopring.parent.dto.ParentProfileResponse
 import com.sangyoon.kopring.parent.service.ParentProfileService
 import org.junit.jupiter.api.Test
+import org.mockito.Mockito.`when`
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest
 import org.springframework.context.annotation.Import
 import org.springframework.http.MediaType
-import org.springframework.test.annotation.DirtiesContext
+import org.springframework.test.context.bean.override.mockito.MockitoBean
 import org.springframework.test.context.TestPropertySource
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
@@ -16,14 +21,33 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPat
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
 @WebMvcTest(ParentProfileController::class)
-@Import(ParentProfileService::class, ControllerExceptionAdvice::class)
+@Import(ControllerExceptionAdvice::class)
 @TestPropertySource(properties = ["spring.data.jpa.auditing.enabled=false"])
-@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 class ParentProfileControllerTest(
     @Autowired private val mockMvc: MockMvc,
 ) {
+    @MockitoBean
+    private lateinit var parentProfileService: ParentProfileService
+
     @Test
     fun `부모님 프로필 생성 요청이 성공하면 201 응답을 반환한다`() {
+        val request = ParentProfileCreateRequest(
+            nickname = "엄마",
+            ageRange = "60대",
+            walkingSpeed = "느림",
+            preferStairs = false,
+            restInterval = "30분마다",
+            preferredThemes = listOf("전통시장", "사찰/역사"),
+        )
+        val response = ParentProfileResponse(
+            id = 1L,
+            nickname = "엄마",
+            ageRange = "60대",
+            walkingSpeed = "느림",
+            preferStairs = false,
+            restInterval = "30분마다",
+            preferredThemes = listOf("전통시장", "사찰/역사"),
+        )
         val requestBody = """
 			{
 			  "nickname": "엄마",
@@ -34,6 +58,8 @@ class ParentProfileControllerTest(
 			  "preferredThemes": ["전통시장", "사찰/역사"]
 			}
 		""".trimIndent()
+
+        `when`(parentProfileService.createParentProfile(request)).thenReturn(response)
 
         mockMvc.perform(
             post("/api/v1/parent-profiles")
@@ -104,22 +130,17 @@ class ParentProfileControllerTest(
 
     @Test
     fun `부모님 프로필 조회 요청이 성공하면 200 응답을 반환한다`() {
-        val requestBody = """
-			{
-			  "nickname": "아빠",
-			  "ageRange": "70대",
-			  "walkingSpeed": "보통",
-			  "preferStairs": true,
-			  "restInterval": "1시간마다",
-			  "preferredThemes": ["자연풍경"]
-			}
-		""".trimIndent()
-
-        mockMvc.perform(
-            post("/api/v1/parent-profiles")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(requestBody),
+        val response = ParentProfileResponse(
+            id = 1L,
+            nickname = "아빠",
+            ageRange = "70대",
+            walkingSpeed = "보통",
+            preferStairs = true,
+            restInterval = "1시간마다",
+            preferredThemes = listOf("자연풍경"),
         )
+
+        `when`(parentProfileService.getParentProfile(1L)).thenReturn(response)
 
         mockMvc.perform(get("/api/v1/parent-profiles/1"))
             .andExpect(status().isOk)
@@ -137,6 +158,9 @@ class ParentProfileControllerTest(
 
     @Test
     fun `존재하지 않는 부모님 프로필을 조회하면 404 응답을 반환한다`() {
+        `when`(parentProfileService.getParentProfile(999L))
+            .thenThrow(NotFoundException(ErrorStatus.NOT_FOUND_PARENT_PROFILE_EXCEPTION.message))
+
         mockMvc.perform(get("/api/v1/parent-profiles/999"))
             .andExpect(status().isNotFound)
             .andExpect(jsonPath("$.success").value(false))
