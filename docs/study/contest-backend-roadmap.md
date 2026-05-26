@@ -147,7 +147,7 @@ DELETE /api/v1/parent-profiles/{parentProfileId}
 - [x] Lesson 11. `ParentProfileRepository` 작성
 - [x] Lesson 12. Service를 JPA 기반으로 변경
 - [x] Lesson 13. BaseTimeEntity 적용
-- [ ] Lesson 14. Repository/Service 테스트 작성
+- [x] Lesson 14. Repository/Service 테스트 작성
 
 완료 기준:
 
@@ -460,17 +460,22 @@ Codex는 다음 단계 안내 시 이 형식을 사용한다.
 | 2026-05-22 | 11 | ParentProfileRepository 작성 | 완료 | JpaRepository 추가 및 저장/조회 Repository 테스트 작성 |
 | 2026-05-23 | 12 | ParentProfileService를 JPA 기반으로 변경 | 완료 | 메모리 저장소 제거 후 Repository 저장/조회로 전환 |
 | 2026-05-25 | 13 | ParentProfile Auditing 적용 확인 | 완료 | 저장 시 createdAt/updatedAt 자동 기록 테스트 추가 |
+| 2026-05-26 | 14 | ParentProfileService 테스트 작성 | 완료 | 생성/조회/NotFound 흐름 검증, Phase 2 완료 |
 
 ---
 
 ## 다음에 시작할 작업
 
-다음 수업은 `Lesson 14. Repository/Service 테스트 작성`이다.
+다음 수업은 `Lesson 15. travel 도메인 생성`이다.
 
-목표는 JPA 기반 `ParentProfileService`의 생성/조회/NotFound 흐름을 테스트로 검증하는 것이다.
+목표는 부모님 프로필을 기반으로 여행 계획을 생성하기 위한 `travel` 도메인 패키지를 만드는 것이다.
 
 ```text
-createParentProfile / getParentProfile
+travel/controller
+travel/service
+travel/dto
+travel/entity
+travel/repository
 ```
 
-다음 단계가 끝나면 Phase 2의 핵심인 PostgreSQL 저장 흐름이 테스트까지 갖춰진다.
+다음 단계부터 Phase 3으로 넘어가 여행 계획 생성 흐름을 만든다.
