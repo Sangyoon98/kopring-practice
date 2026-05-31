@@ -161,7 +161,7 @@ DELETE /api/v1/parent-profiles/{parentProfileId}
 
 목표: 부모님 프로필을 기반으로 여행 계획을 생성하고 도시 선택 전 상태를 저장한다.
 
-- [ ] Lesson 15. `travel` 도메인 생성
+- [x] Lesson 15. `travel` 도메인 생성
 - [ ] Lesson 16. `TravelPlan` Entity 작성
 - [ ] Lesson 17. 부모님 프로필과 여행 계획 연관관계 설정
 - [ ] Lesson 18. 여행 기간, 출발지, 선호 테마 저장
@@ -461,21 +461,19 @@ Codex는 다음 단계 안내 시 이 형식을 사용한다.
 | 2026-05-23 | 12 | ParentProfileService를 JPA 기반으로 변경 | 완료 | 메모리 저장소 제거 후 Repository 저장/조회로 전환 |
 | 2026-05-25 | 13 | ParentProfile Auditing 적용 확인 | 완료 | 저장 시 createdAt/updatedAt 자동 기록 테스트 추가 |
 | 2026-05-26 | 14 | ParentProfileService 테스트 작성 | 완료 | 생성/조회/NotFound 흐름 검증, Phase 2 완료 |
+| 2026-06-01 | 15 | travel 도메인 패키지 생성 | 완료 | controller/service/repository/entity/dto 뼈대와 도메인/API 문서 추가 |
 
 ---
 
 ## 다음에 시작할 작업
 
-다음 수업은 `Lesson 15. travel 도메인 생성`이다.
+다음 수업은 `Lesson 16. TravelPlan Entity 작성`이다.
 
-목표는 부모님 프로필을 기반으로 여행 계획을 생성하기 위한 `travel` 도메인 패키지를 만드는 것이다.
+목표는 여행 계획을 PostgreSQL에 저장하기 위한 `TravelPlan` JPA Entity를 작성하는 것이다.
 
 ```text
-travel/controller
-travel/service
-travel/dto
 travel/entity
-travel/repository
+TravelPlan.kt
 ```
 
-다음 단계부터 Phase 3으로 넘어가 여행 계획 생성 흐름을 만든다.
+다음 단계에서는 여행 기간, 출발지, 도시 확정 전/후 상태를 표현할 필드를 정한다.

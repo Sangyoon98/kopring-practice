@@ -12,7 +12,9 @@
 | `root` | `com.sangyoon.kopring` | 애플리케이션 진입점 |
 | `common` | `com.sangyoon.kopring.common` | 공통 응답, 예외, advice, config, 엔티티 기반 클래스 |
 | `health` | `com.sangyoon.kopring.health` | health 체크 API (`controller/service/dto`) |
+| `parent` | `com.sangyoon.kopring.parent` | 부모님 프로필 API 도메인 (`controller/service/repository/entity/dto`) |
 | `sample` | `com.sangyoon.kopring.sample` | 샘플 API 예제 (`controller/service/dto`) |
+| `travel` | `com.sangyoon.kopring.travel` | 여행 계획 도메인 (`controller/service/repository/entity/dto`) |
 
 ---
 
@@ -36,3 +38,5 @@
 | 2026-05-08 | common 엔티티 시간 추적 기반 클래스 추가 |
 | 2026-05-08 | Swagger/OpenAPI 설정 추가 |
 | 2026-05-08 | Java 연습 프로젝트와 동일한 status 기반 공통 응답/예외 구조로 정렬 |
+| 2026-06-01 | parent 부모님 프로필 도메인 문서 등록 |
+| 2026-06-01 | travel 여행 계획 도메인 패키지 추가 |
