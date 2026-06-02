@@ -11,5 +11,20 @@
 
 ## 현재 상태
 
-- 도메인 패키지 생성 단계
-- Entity, Repository, API는 이후 Lesson에서 구현
+- `TravelPlan` Entity 작성 완료
+- 여행 계획 제목, 여행 시작일, 여행 종료일, 출발지를 저장한다.
+- 부모님 프로필 연관관계, Repository, API는 이후 Lesson에서 구현
+
+## Entity
+
+### TravelPlan
+
+| 필드 | 설명 |
+|------|------|
+| `id` | 여행 계획 ID |
+| `title` | 여행 계획 제목 |
+| `startDate` | 여행 시작일 |
+| `endDate` | 여행 종료일 |
+| `departurePlace` | 출발지 |
+| `createdAt` | 생성일 |
+| `updatedAt` | 수정일 |
