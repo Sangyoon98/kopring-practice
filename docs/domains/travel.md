@@ -12,8 +12,9 @@
 ## 현재 상태
 
 - `TravelPlan` Entity 작성 완료
+- 부모님 프로필과 여행 계획의 단방향 연관관계를 설정했다.
 - 여행 계획 제목, 여행 시작일, 여행 종료일, 출발지를 저장한다.
-- 부모님 프로필 연관관계, Repository, API는 이후 Lesson에서 구현
+- Repository, API는 이후 Lesson에서 구현
 
 ## Entity
 
@@ -22,9 +23,20 @@
 | 필드 | 설명 |
 |------|------|
 | `id` | 여행 계획 ID |
+| `parentProfile` | 여행 계획의 기준이 되는 부모님 프로필 |
 | `title` | 여행 계획 제목 |
 | `startDate` | 여행 시작일 |
 | `endDate` | 여행 종료일 |
 | `departurePlace` | 출발지 |
 | `createdAt` | 생성일 |
 | `updatedAt` | 수정일 |
+
+## 연관관계
+
+```text
+ParentProfile 1개 → TravelPlan 여러 개
+```
+
+- `TravelPlan`에서 `ParentProfile`을 `@ManyToOne(fetch = FetchType.LAZY)`로 참조한다.
+- `travel_plans.parent_profile_id` 컬럼으로 부모님 프로필을 연결한다.
+- 현재는 `TravelPlan → ParentProfile` 단방향 관계만 사용한다.
