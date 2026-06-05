@@ -2,7 +2,9 @@ package com.sangyoon.kopring.travel.entity
 
 import com.sangyoon.kopring.common.entity.BaseTimeEntity
 import com.sangyoon.kopring.parent.entity.ParentProfile
+import jakarta.persistence.CollectionTable
 import jakarta.persistence.Column
+import jakarta.persistence.ElementCollection
 import jakarta.persistence.Entity
 import jakarta.persistence.FetchType
 import jakarta.persistence.GeneratedValue
@@ -31,6 +33,14 @@ class TravelPlan(
 
     @Column(nullable = false, length = 100)
     val departurePlace: String,
+
+    @ElementCollection(fetch = FetchType.LAZY)
+    @CollectionTable(
+        name = "travel_plan_preferred_themes",
+        joinColumns = [JoinColumn(name = "travel_plan_id")],
+    )
+    @Column(name = "theme", nullable = false, length = 50)
+    val preferredThemes: MutableList<String> = mutableListOf(),
 ) : BaseTimeEntity() {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

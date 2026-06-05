@@ -164,7 +164,7 @@ DELETE /api/v1/parent-profiles/{parentProfileId}
 - [x] Lesson 15. `travel` 도메인 생성
 - [x] Lesson 16. `TravelPlan` Entity 작성
 - [x] Lesson 17. 부모님 프로필과 여행 계획 연관관계 설정
-- [ ] Lesson 18. 여행 기간, 출발지, 선호 테마 저장
+- [x] Lesson 18. 여행 기간, 출발지, 선호 테마 저장
 - [ ] Lesson 19. 여행 계획 생성/조회 API 작성
 - [ ] Lesson 20. 여행 계획 상태값 작성
 
@@ -464,18 +464,19 @@ Codex는 다음 단계 안내 시 이 형식을 사용한다.
 | 2026-06-01 | 15 | travel 도메인 패키지 생성 | 완료 | controller/service/repository/entity/dto 뼈대와 도메인/API 문서 추가 |
 | 2026-06-02 | 16 | TravelPlan JPA Entity 작성 | 완료 | 여행 계획 제목, 기간, 출발지 필드 모델링 |
 | 2026-06-04 | 17 | TravelPlan과 ParentProfile 연관관계 설정 | 완료 | ManyToOne 단방향 관계와 parent_profile_id FK 매핑 |
+| 2026-06-05 | 18 | TravelPlan 선호 테마와 DTO 작성 | 완료 | 여행 조건 선호 테마 저장, 생성 요청/응답 DTO 추가 |
 
 ---
 
 ## 다음에 시작할 작업
 
-다음 수업은 `Lesson 18. 여행 기간, 출발지, 선호 테마 저장`이다.
+다음 수업은 `Lesson 19. 여행 계획 생성/조회 API 작성`이다.
 
-목표는 여행 계획 생성 시 필요한 요청/응답 DTO와 여행 조건 필드를 정리하는 것이다.
+목표는 `TravelPlanCreateRequest`와 `TravelPlanResponse`를 사용해 여행 계획 생성/조회 API를 구현하는 것이다.
 
 ```text
-TravelPlanCreateRequest
-TravelPlanResponse
+POST /api/v1/travel-plans
+GET  /api/v1/travel-plans/{travelPlanId}
 ```
 
-다음 단계에서는 API 구현 전 DTO를 만들고 여행 계획 입력값을 명확히 한다.
+다음 단계에서는 `TravelPlanRepository`를 JPA Repository로 바꾸고 Service/Controller를 구현한다.
