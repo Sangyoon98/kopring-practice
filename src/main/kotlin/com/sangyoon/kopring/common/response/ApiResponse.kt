@@ -79,6 +79,10 @@ enum class ErrorStatus(
 		httpStatus = HttpStatus.NOT_FOUND,
 		message = "부모님 프로필을 찾을 수 없습니다.",
 	),
+	NOT_FOUND_TRAVEL_PLAN_EXCEPTION(
+		httpStatus = HttpStatus.NOT_FOUND,
+		message = "여행 계획을 찾을 수 없습니다.",
+	),
 	FAIL_UPLOAD_EXCEPTION(
 		httpStatus = HttpStatus.INTERNAL_SERVER_ERROR,
 		message = "파일 업로드 실패하였습니다.",
@@ -103,11 +107,19 @@ enum class SuccessStatus(
 	),
 	CREATE_PARENT_PROFILE_SUCCESS(
 		httpStatus = HttpStatus.CREATED,
-		message = "부모님 프로필 생성 성공"
+		message = "부모님 프로필 생성 성공",
 	),
 	GET_PARENT_PROFILE_SUCCESS(
 		httpStatus = HttpStatus.OK,
-		message = "부모님 프로필 조회 성공"
+		message = "부모님 프로필 조회 성공",
+	),
+	CREATE_TRAVEL_PLAN_SUCCESS(
+		httpStatus = HttpStatus.CREATED,
+		message = "여행 계획 생성 성공",
+	),
+	GET_TRAVEL_PLAN_SUCCESS(
+		httpStatus = HttpStatus.OK,
+		message = "여행 계획 조회 성공",
 	),
 	;
 

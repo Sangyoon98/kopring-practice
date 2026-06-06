@@ -14,7 +14,9 @@
 - `TravelPlan` Entity 작성 완료
 - 부모님 프로필과 여행 계획의 단방향 연관관계를 설정했다.
 - 여행 계획 제목, 여행 시작일, 여행 종료일, 출발지, 이번 여행의 선호 테마를 저장한다.
-- Repository, API는 이후 Lesson에서 구현
+- `TravelPlanRepository`를 JPA Repository로 구현했다.
+- 여행 계획 생성/조회 API를 구현했다.
+- 여행 계획 상태값은 이후 Lesson에서 구현한다.
 
 ## Entity
 
@@ -52,3 +54,22 @@ ParentProfile 1개 → TravelPlan 여러 개
 |------|------|
 | `travel_plan_id` | 여행 계획 ID |
 | `theme` | 선호 테마 |
+
+## Repository
+
+### TravelPlanRepository
+
+`JpaRepository<TravelPlan, Long>`을 상속한다.
+
+- 여행 계획 저장
+- 여행 계획 ID 기반 조회
+
+## API
+
+```http
+POST /api/v1/travel-plans
+GET  /api/v1/travel-plans/{travelPlanId}
+```
+
+- 생성 API는 부모님 프로필 ID로 `ParentProfile`을 조회한 뒤 여행 계획을 저장한다.
+- 조회 API는 여행 계획 ID로 `TravelPlan`을 조회한다.
