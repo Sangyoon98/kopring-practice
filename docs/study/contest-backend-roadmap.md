@@ -166,7 +166,7 @@ DELETE /api/v1/parent-profiles/{parentProfileId}
 - [x] Lesson 17. 부모님 프로필과 여행 계획 연관관계 설정
 - [x] Lesson 18. 여행 기간, 출발지, 선호 테마 저장
 - [x] Lesson 19. 여행 계획 생성/조회 API 작성
-- [ ] Lesson 20. 여행 계획 상태값 작성
+- [x] Lesson 20. 여행 계획 상태값 작성
 
 목표 API:
 
@@ -466,18 +466,22 @@ Codex는 다음 단계 안내 시 이 형식을 사용한다.
 | 2026-06-04 | 17 | TravelPlan과 ParentProfile 연관관계 설정 | 완료 | ManyToOne 단방향 관계와 parent_profile_id FK 매핑 |
 | 2026-06-05 | 18 | TravelPlan 선호 테마와 DTO 작성 | 완료 | 여행 조건 선호 테마 저장, 생성 요청/응답 DTO 추가 |
 | 2026-06-06 | 19 | 여행 계획 생성/조회 API 작성 | 완료 | TravelPlanRepository JPA 전환, Service/Controller 생성/조회 구현 |
+| 2026-06-07 | 20 | 여행 계획 상태값 작성 | 완료 | TravelPlanStatus enum 추가, 생성/조회 응답에 상태 포함 |
 
 ---
 
 ## 다음에 시작할 작업
 
-다음 수업은 `Lesson 20. 여행 계획 상태값 작성`이다.
+다음 수업은 `Lesson 21. city 도메인 생성`이다.
 
-목표는 여행 계획이 도시 확정 전/후 상태를 가질 수 있도록 상태 enum을 추가하는 것이다.
+목표는 여행 도시 검색/추천을 담을 `city` 패키지 뼈대를 만드는 것이다.
 
 ```text
-TravelPlanStatus
-READY_TO_SELECT_CITY / CITY_CONFIRMED
+city/controller
+city/service
+city/repository
+city/entity
+city/dto
 ```
 
-다음 단계에서는 여행 계획 상태값을 Entity와 응답 DTO에 포함한다.
+다음 단계에서는 도시 기본 데이터를 저장하기 전, 도메인 패키지와 문서부터 만든다.

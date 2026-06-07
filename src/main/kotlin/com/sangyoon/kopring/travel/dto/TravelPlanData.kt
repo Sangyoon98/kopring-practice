@@ -1,6 +1,7 @@
 package com.sangyoon.kopring.travel.dto
 
 import com.sangyoon.kopring.travel.entity.TravelPlan
+import com.sangyoon.kopring.travel.entity.TravelPlanStatus
 import io.swagger.v3.oas.annotations.media.Schema
 import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.NotEmpty
@@ -48,6 +49,8 @@ data class TravelPlanResponse(
     val endDate: LocalDate,
     @field:Schema(description = "출발지", example = "서울역")
     val departurePlace: String,
+    @field:Schema(description = "여행 계획 상태", example = "READY_TO_SELECT_CITY")
+    val status: TravelPlanStatus,
     @field:Schema(description = "이번 여행의 선호 테마", example = "[\"자연풍경\", \"전통시장\"]")
     val preferredThemes: List<String>,
 ) {
@@ -60,6 +63,7 @@ data class TravelPlanResponse(
                 startDate = travelPlan.startDate,
                 endDate = travelPlan.endDate,
                 departurePlace = travelPlan.departurePlace,
+                status = travelPlan.status,
                 preferredThemes = travelPlan.preferredThemes,
             )
     }

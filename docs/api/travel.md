@@ -15,7 +15,8 @@ GET  /api/v1/travel-plans/{travelPlanId}
 - 부모님 프로필과 여행 계획의 연관관계가 설정되었습니다.
 - 여행 계획 생성 요청/응답 DTO가 작성되었습니다.
 - 여행 계획 생성/조회 API가 구현되었습니다.
-- 다음 단계에서 여행 계획 상태값을 추가합니다.
+- 여행 계획 상태값이 응답에 포함됩니다.
+- 새로 생성한 여행 계획의 기본 상태는 `READY_TO_SELECT_CITY`입니다.
 
 ## API 상세
 
@@ -61,6 +62,7 @@ GET /api/v1/travel-plans/{travelPlanId}
 | `startDate` | 여행 시작일 |
 | `endDate` | 여행 종료일 |
 | `departurePlace` | 출발지 |
+| `status` | 여행 계획 상태 |
 | `preferredThemes` | 이번 여행의 선호 테마 |
 
 ## 응답 DTO

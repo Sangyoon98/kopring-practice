@@ -16,7 +16,7 @@
 - 여행 계획 제목, 여행 시작일, 여행 종료일, 출발지, 이번 여행의 선호 테마를 저장한다.
 - `TravelPlanRepository`를 JPA Repository로 구현했다.
 - 여행 계획 생성/조회 API를 구현했다.
-- 여행 계획 상태값은 이후 Lesson에서 구현한다.
+- 여행 계획 상태값을 저장하고 응답에 포함한다.
 
 ## Entity
 
@@ -30,9 +30,19 @@
 | `startDate` | 여행 시작일 |
 | `endDate` | 여행 종료일 |
 | `departurePlace` | 출발지 |
+| `status` | 여행 계획 상태 |
 | `preferredThemes` | 이번 여행에서 사용할 선호 테마 목록 |
 | `createdAt` | 생성일 |
 | `updatedAt` | 수정일 |
+
+## 상태값
+
+### TravelPlanStatus
+
+| 값 | 설명 |
+|---|---|
+| `READY_TO_SELECT_CITY` | 여행 계획은 생성했지만 아직 도시를 확정하지 않은 상태 |
+| `CITY_CONFIRMED` | 여행 도시를 확정한 상태 |
 
 ## 연관관계
 
