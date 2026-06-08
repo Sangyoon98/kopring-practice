@@ -188,7 +188,7 @@ GET  /api/v1/travel-plans/{travelPlanId}
 
 목표: 사용자가 도시를 직접 선택하거나 서버가 후보 도시를 추천한다.
 
-- [ ] Lesson 21. `city` 도메인 생성
+- [x] Lesson 21. `city` 도메인 생성
 - [ ] Lesson 22. 도시 기본 데이터 모델링
 - [ ] Lesson 23. 도시 검색 API 작성
 - [ ] Lesson 24. 여행 계획에 도시 확정 API 작성
@@ -467,21 +467,21 @@ Codex는 다음 단계 안내 시 이 형식을 사용한다.
 | 2026-06-05 | 18 | TravelPlan 선호 테마와 DTO 작성 | 완료 | 여행 조건 선호 테마 저장, 생성 요청/응답 DTO 추가 |
 | 2026-06-06 | 19 | 여행 계획 생성/조회 API 작성 | 완료 | TravelPlanRepository JPA 전환, Service/Controller 생성/조회 구현 |
 | 2026-06-07 | 20 | 여행 계획 상태값 작성 | 완료 | TravelPlanStatus enum 추가, 생성/조회 응답에 상태 포함 |
+| 2026-06-08 | 21 | city 도메인 생성 | 완료 | CityController, CityService, CityRepository 뼈대와 도메인/API 문서 추가 |
 
 ---
 
 ## 다음에 시작할 작업
 
-다음 수업은 `Lesson 21. city 도메인 생성`이다.
+다음 수업은 `Lesson 22. 도시 기본 데이터 모델링`이다.
 
-목표는 여행 도시 검색/추천을 담을 `city` 패키지 뼈대를 만드는 것이다.
+목표는 도시 검색과 추천의 기준 데이터가 될 `City` Entity를 작성하는 것이다.
 
 ```text
-city/controller
-city/service
-city/repository
-city/entity
-city/dto
+City
+- name
+- region
+- description
 ```
 
-다음 단계에서는 도시 기본 데이터를 저장하기 전, 도메인 패키지와 문서부터 만든다.
+다음 단계에서는 `CityRepository`를 `JpaRepository`로 바꾸고 Entity 저장 구조를 만든다.
