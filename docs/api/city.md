@@ -12,7 +12,8 @@ GET /api/v1/cities?keyword=경주
 
 - 아직 API 메서드는 구현하지 않았습니다.
 - `city` 도메인 기본 패키지를 생성했습니다.
-- 다음 단계에서 `City` Entity를 작성합니다.
+- `City` Entity와 JPA Repository를 작성했습니다.
+- 다음 단계에서 도시 검색 API를 구현합니다.
 
 ## 예정 응답 DTO
 
